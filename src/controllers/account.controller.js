@@ -14,6 +14,16 @@ async function createAccountController(req, res) {
   }
 }
 
+async function getUserAccountsController(req, res) {
+  try {
+    const accounts = await accountModel.find({ user: req.user._id });
+    res.status(200).json({ accounts });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching accounts" });
+  }
+}
+
 module.exports = {
   createAccountController,
+  getUserAccountsController,
 };
