@@ -25,4 +25,18 @@ router.get(
   accountController.getUserAccountsController,
 );
 
+/**
+ * - Get /api/accounts/balance/:accountId
+ * - Get the balance of a specific account by its ID for the authenticated user
+ * - Protected route, requires authentication
+ * - Get the total balance of all accounts for the authenticated user
+ * - Protected route, requires authentication
+ */
+
+router.get(
+  "/balance/:accountId",
+  authMiddleware.authMiddleware,
+  accountController.getAccountBalanceController,
+);
+
 module.exports = router;
